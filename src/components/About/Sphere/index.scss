@@ -1,0 +1,46 @@
+.Sphere {
+  width: 400px;
+  height: 609px;
+  top: 10;
+  position: absolute;
+  right: 15%;
+  left: auto;
+  margin: auto;
+}
+
+.tagcloud {
+  display: inline-block;
+  top: 0;
+  left: 0;
+  font-family: 'Coolvetica';
+  font-weight: 400;
+  font-size: 15px;
+}
+
+/* Change color of each text in sphere on hover   */
+.tagcloud--item {
+  color: white;
+}
+
+.tagcloud--item:hover {
+  color: #64ccc5;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .Sphere {
+    width: 35%;
+    height: 35%;
+    top: 70%;
+    position: absolute;
+    right: 50%;
+    left: auto;
+    margin: auto;
+  }
+  .tagcloud {
+    display: inline-block;
+    top: 10%;
+    font-weight: 400;
+    font-size: 10px;
+  }
+}

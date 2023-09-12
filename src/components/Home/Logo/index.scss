@@ -1,0 +1,54 @@
+.logo-container {
+  z-index: 0;
+  width: 400px;
+  height: 609px;
+  position: absolute;
+  top: 0;
+  right: 10%;
+  bottom: 0;
+  left: auto;
+  margin: auto;
+  margin-top: 7%;
+  opacity: 0;
+
+  svg {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    transform: rotatez(-30deg) !important;
+  }
+
+  .solid-logo {
+    position: absolute;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    opacity: 0;
+    transform: rotateZ(-30deg);
+    z-index: 1;
+  }
+}
+
+.svg-container {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  transform: rotateZ(-30deg);
+  z-index: 1;
+}
+
+/* Add your existing styles here */
+
+/* Add a media query to hide the Logo component on screens with a maximum width of 768px (adjust as needed) */
+@media (max-width: 768px) {
+  .logo-container {
+    display: none; /* Hide the Logo image */
+  }
+}
