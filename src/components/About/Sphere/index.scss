@@ -3,7 +3,7 @@
   height: 609px;
   top: 10%;
   position: absolute;
-  right: 15%;
+  right: 20%;
   left: auto;
   margin: auto;
 }
@@ -14,7 +14,7 @@
   left: 0;
   font-family: 'Coolvetica';
   font-weight: 400;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 /* Change color of each text in sphere on hover   */
@@ -24,7 +24,7 @@
 
 .tagcloud--item:hover {
   color: #64ccc5;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
