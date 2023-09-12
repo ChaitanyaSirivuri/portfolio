@@ -31,7 +31,7 @@ const Sphere = () => {
     ]
 
     const options = {
-      radius: window.innerWidth <= 768 ? 120 : 275,
+      radius: window.innerWidth <= 768 ? 120 : 300,
       maxSpeed: 'fast',
       initSpeed: 'fast',
       keep: false,
