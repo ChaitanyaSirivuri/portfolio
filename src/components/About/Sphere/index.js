@@ -18,6 +18,7 @@ const Sphere = () => {
       'Numpy',
       'Pandas',
       'Tensorflow',
+      'PyTorch',
       'Matplotlib',
       'ScikitLearn',
       'Keras',
