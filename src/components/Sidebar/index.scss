@@ -67,6 +67,8 @@
 
       &:hover {
         color: black;
+        // font to jetbrains mono
+        font-family: jetbrains mono, monospace;
 
         svg {
           opacity: 0;
@@ -98,6 +100,16 @@
     a.about-link {
       &::after {
         content: 'ABOUT';
+      }
+    }
+    a.projects-link {
+      &::after {
+        content: 'PROJECTS';
+      }
+    }
+    a.blogs-link {
+      &::after {
+        content: 'BLOGS';
       }
     }
 
