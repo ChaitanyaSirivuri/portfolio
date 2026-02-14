@@ -1,18 +1,29 @@
 module.exports = {
-    devServer: {
-        // Fix: replace deprecated onBeforeSetupMiddleware / onAfterSetupMiddleware
-        // with the modern setupMiddlewares option expected by webpack-dev-server 4.x
-        setupMiddlewares: (middlewares, devServer) => {
-            return middlewares
-        },
+    // Fix 1: replace deprecated onBeforeSetupMiddleware / onAfterSetupMiddleware.
+    // react-scripts hardcodes these in webpackDevServer.config.js.
+    // Using a function form gives us the full devServerConfig so we can delete
+    // those deprecated keys and replace them with the modern setupMiddlewares.
+    devServer: (devServerConfig) => {
+        const { onBeforeSetupMiddleware, onAfterSetupMiddleware, ...rest } =
+            devServerConfig
+        return {
+            ...rest,
+            setupMiddlewares: (middlewares, devServer) => {
+                // Preserve react-scripts before-setup (evalSourceMapMiddleware, proxySetup)
+                if (onBeforeSetupMiddleware) onBeforeSetupMiddleware(devServer)
+                // Preserve react-scripts after-setup (redirectServedPath, noopServiceWorker)
+                if (onAfterSetupMiddleware) onAfterSetupMiddleware(devServer)
+                return middlewares
+            },
+        }
     },
 
     webpack: {
         configure: (webpackConfig) => {
-            // Fix: switch sass-loader from the legacy JS API to the modern API
-            // (required by Dart Sass 1.x; old api triggers "legacy-js-api" deprecation)
-            // Also set quietDeps:true to silence @import/@use warnings from third-party
-            // node_modules (e.g. loaders.css) that we cannot modify.
+            // Fix 2: switch sass-loader from the legacy JS API to the modern API.
+            // Dart Sass 1.x emits a "legacy-js-api" deprecation for the old API.
+            // quietDeps: true suppresses @import / '/' division warnings coming from
+            // third-party node_modules (e.g. loaders.css) that we cannot modify.
             const findSassLoader = (rules) => {
                 for (const rule of rules) {
                     if (rule.use) {
