@@ -95,7 +95,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="info-map">
-          Chaitanya Varma,
+          Chaitanya Sirivuri,
           <br />
           India,
           <br />
