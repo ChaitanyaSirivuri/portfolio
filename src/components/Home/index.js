@@ -4,6 +4,7 @@ import './index.scss'
 import LogoTitle from '../../assets/images/logo-c-down.png'
 import AnimatedLetters from '../AnimatedLetters'
 import Logo from './Logo'
+import MouseTrail from './MouseTrail'
 import Loader from 'react-loaders'
 
 const Home = () => {
@@ -52,6 +53,7 @@ const Home = () => {
         <Logo />
       </div>
       <Loader type="pacman" />
+      <MouseTrail />
     </>
   )
 }
