@@ -3,16 +3,24 @@ import AnimatedLetters from '../AnimatedLetters'
 import Sphere from './Sphere'
 import './index.scss'
 import Loader from 'react-loaders'
+import MouseTrail from '../Home/MouseTrail'
 
 const About = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
+  const [showTrail, setShowTrail] = useState(false)
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setLetterClass('text-animate-hover')
     }, 4000)
 
+    const trailTimeout = setTimeout(() => {
+      setShowTrail(true)
+    }, 1000)
+
     return () => {
       clearTimeout(timeoutId)
+      clearTimeout(trailTimeout)
     }
   }, [])
   return (
@@ -49,6 +57,7 @@ const About = () => {
         <Sphere />
       </div>
       <Loader type="pacman" />
+      {showTrail && <MouseTrail />}
     </>
   )
 }
