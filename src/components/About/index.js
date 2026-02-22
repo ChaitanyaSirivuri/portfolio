@@ -27,7 +27,7 @@ const About = () => {
             />
           </h1>
           <p>
-            Hi, I'm Chaitanya Varma, enthusiastic undergraduate student who is
+            Hi, I'm Chaitanya Sirivuri, enthusiastic undergraduate student who is
             passionate about the exciting world of machine learning and data
             science. Hailing from a diverse academic background, my insatiable
             curiosity led me to explore the realms of artificial intelligence
