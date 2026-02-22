@@ -1,0 +1,167 @@
+{
+    "version": 8,
+    "glyphs": "https://tiles.basemaps.cartocdn.com/fonts/{fontstack}/{range}.pbf",
+    "sources": {
+        "carto": {
+            "type": "vector",
+            "url": "https://tiles.basemaps.cartocdn.com/vector/carto.streets/v1/tiles.json"
+        }
+    },
+    "layers": [
+        {
+            "id": "background",
+            "type": "background",
+            "paint": {
+                "background-color": "#64cccd"
+            }
+        },
+        {
+            "id": "landcover",
+            "type": "fill",
+            "source": "carto",
+            "source-layer": "landcover",
+            "paint": {
+                "fill-color": "#64cccd"
+            }
+        },
+        {
+            "id": "landuse",
+            "type": "fill",
+            "source": "carto",
+            "source-layer": "landuse",
+            "paint": {
+                "fill-color": "#64cccd"
+            }
+        },
+        {
+            "id": "buildings",
+            "type": "fill",
+            "source": "carto",
+            "source-layer": "building",
+            "paint": {
+                "fill-color": "#000000",
+                "fill-opacity": 0.3
+            }
+        },
+        {
+            "id": "water",
+            "type": "fill",
+            "source": "carto",
+            "source-layer": "water",
+            "paint": {
+                "fill-color": "#000000"
+            }
+        },
+        {
+            "id": "waterway",
+            "type": "line",
+            "source": "carto",
+            "source-layer": "waterway",
+            "paint": {
+                "line-color": "#000000",
+                "line-width": 1
+            }
+        },
+        {
+            "id": "transportation",
+            "type": "line",
+            "source": "carto",
+            "source-layer": "transportation",
+            "paint": {
+                "line-color": "#000000",
+                "line-width": 1
+            }
+        },
+        {
+            "id": "place_label",
+            "type": "symbol",
+            "source": "carto",
+            "source-layer": "place",
+            "layout": {
+                "text-field": "{name:en}",
+                "text-font": [
+                    "Open Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    10,
+                    15,
+                    16
+                ]
+            },
+            "paint": {
+                "text-color": "#000000",
+                "text-halo-color": "#64cccd",
+                "text-halo-width": 2
+            }
+        },
+        {
+            "id": "poi_label",
+            "type": "symbol",
+            "source": "carto",
+            "source-layer": "poi",
+            "layout": {
+                "text-field": "{name:en}",
+                "text-font": [
+                    "Open Sans Regular"
+                ],
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    10,
+                    10,
+                    15,
+                    14
+                ]
+            },
+            "paint": {
+                "text-color": "#000000",
+                "text-halo-color": "#64cccd",
+                "text-halo-width": 1.5
+            }
+        },
+        {
+            "id": "road_label",
+            "type": "symbol",
+            "source": "carto",
+            "source-layer": "transportation_name",
+            "layout": {
+                "text-field": "{name:en}",
+                "text-font": [
+                    "Open Sans Regular"
+                ],
+                "symbol-placement": "line",
+                "text-size": [
+                    "interpolate",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    10,
+                    15,
+                    14
+                ]
+            },
+            "paint": {
+                "text-color": "#000000",
+                "text-halo-color": "#64cccd",
+                "text-halo-width": 1.5
+            }
+        }
+    ]
+}
