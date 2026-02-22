@@ -7,10 +7,12 @@
   z-index: 3;
   min-height: 500px;
   opacity: 1;
-  transition: transform 0.3s ease-out; /* Add a smooth transition effect */
+  transition: transform 0.3s ease-out;
+  /* Add a smooth transition effect */
 
   &.open {
-    transform: translateX(0); /* Bring the Sidebar on-screen when open */
+    transform: translateX(0);
+    /* Bring the Sidebar on-screen when open */
   }
 
   &.mobile {
@@ -71,6 +73,7 @@
         svg {
           opacity: 0;
         }
+
         &:after {
           opacity: 1;
         }
@@ -78,6 +81,7 @@
 
       &:after {
         content: '';
+        font-family: 'Roboto', sans-serif !important;
         font-size: 9px;
         letter-spacing: 2px;
         position: absolute;
@@ -88,6 +92,7 @@
         opacity: 0;
         transform: all 0.3s ease-out;
       }
+
       &:first-child {
         &::after {
           content: 'HOME';
@@ -113,6 +118,7 @@
       }
     }
   }
+
   ul {
     position: absolute;
     bottom: 20px;
