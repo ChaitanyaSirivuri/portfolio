@@ -109,7 +109,7 @@ const Contact = () => {
             zoom={13}
             scrollWheelZoom={true}
           >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png" />
             <Marker position={[40.9132, -73.1261]}>
               <Popup>Let's have some coffee.</Popup>
             </Marker>
