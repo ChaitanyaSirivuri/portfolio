@@ -97,22 +97,20 @@ const Contact = () => {
         <div className="info-map">
           Chaitanya Sirivuri,
           <br />
-          India,
+          Stony Brook University,
           <br />
-          Sujatha Nagar, 535001
-          <br />
-          Visakhapatnam, Andhra Pradesh
+          Stony Brook, New York
           <br />
           <span className="mail">chaitanyasirivuri@gmail.com</span>
         </div>
         <div className="map-wrap">
           <MapContainer
-            center={[17.799, 83.2145]}
+            center={[40.9132, -73.1261]}
             zoom={13}
             scrollWheelZoom={true}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={[17.799, 83.21]}>
+            <Marker position={[40.9132, -73.1261]}>
               <Popup>Let's have some coffee.</Popup>
             </Marker>
           </MapContainer>
