@@ -1,11 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Loader from 'react-loaders'
-//import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup } from 'react-leaflet'
+import { createTileLayerComponent } from '@react-leaflet/core'
+import L from 'leaflet'
+import '@maplibre/maplibre-gl-leaflet'
+
+import mapStyle from './mapStyle.json'
+
+
+const createVectorTileLayer = (props, context) => {
+  const instance = L.maplibreGL({
+    style: mapStyle,
+    pixelRatio: window.devicePixelRatio || 1,
+    ...props
+  })
+  return { instance, context }
+}
+
+const updateVectorTileLayer = (instance, props, prevProps) => {
+  if (props.style !== prevProps.style) {
+    if (instance.getMaplibreMap) {
+      instance.getMaplibreMap().setStyle(props.style);
+    }
+  }
+}
+
+const VectorTileLayer = createTileLayerComponent(
+  createVectorTileLayer,
+  updateVectorTileLayer
+)
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
@@ -111,7 +137,7 @@ const Contact = () => {
             zoom={13}
             scrollWheelZoom={true}
           >
-            <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png" />
+            <VectorTileLayer />
             <Marker position={[40.9132, -73.1261]}>
               <Popup>Let's have some coffee.</Popup>
             </Marker>
