@@ -9,6 +9,7 @@ import Loader from 'react-loaders'
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
+  const [showTrail, setShowTrail] = useState(false)
   const nameArray = ['h', 'a', 'y']
   const jobArray = ['D', 'a', 't', 'a', ' ', 'S', 'c', 'i', 'e', 'n', 't', 'i', 's', 't', '.']
 
@@ -17,8 +18,13 @@ const Home = () => {
       setLetterClass('text-animate-hover')
     }, 4000)
 
+    const trailTimeout = setTimeout(() => {
+      setShowTrail(true)
+    }, 1000)
+
     return () => {
       clearTimeout(timeoutId)
+      clearTimeout(trailTimeout)
     }
   }, [])
 
@@ -54,7 +60,7 @@ const Home = () => {
         <Logo />
       </div>
       <Loader type="pacman" />
-      <MouseTrail />
+      {showTrail && <MouseTrail />}
     </>
   )
 }
