@@ -3,7 +3,7 @@
   height: 609px;
   top: 10%;
   position: absolute;
-  right: 20%;
+  right: calc(25% - 200px);
   left: auto;
   margin: auto;
 }
@@ -37,6 +37,7 @@
     left: auto;
     margin: auto;
   }
+
   .tagcloud {
     display: inline-block;
     top: 10%;
