@@ -26,18 +26,19 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        'gmail',
-        'template_rdeq9te',
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         refForm.current,
-        'sJH1GCqaEMJPUvOar'
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
           alert('Message successfully sent!')
           window.location.reload(false)
         },
-        () => {
-          alert('Failed to send the message, please try again')
+        (err) => {
+          console.error('EmailJS error:', err)
+          alert('Failed to send the message, please try again. Error: ' + err.text)
         }
       )
   }
