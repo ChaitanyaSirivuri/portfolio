@@ -1,0 +1,8 @@
+.particle-container {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.particle-container.fade-in {
+  opacity: 1;
+}
