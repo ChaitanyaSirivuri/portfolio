@@ -61,15 +61,16 @@ const Contact = () => {
           </p>
           <div className="contact-form">
             <form ref={refForm} onSubmit={sendEmail}>
+              <input type="hidden" name="to_name" value="Chaitanya" />
               <ul>
                 <li className="half">
-                  <input placeholder="Name" type="text" name="name" required />
+                  <input placeholder="Name" type="text" name="from_name" required />
                 </li>
                 <li className="half">
                   <input
                     placeholder="Email"
                     type="email"
-                    name="email"
+                    name="reply_to"
                     required
                   />
                 </li>
