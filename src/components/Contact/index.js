@@ -134,7 +134,7 @@ const Contact = () => {
         <div className="map-wrap">
           <MapContainer
             center={[40.9132, -73.1261]}
-            zoom={13}
+            zoom={15}
             scrollWheelZoom={true}
           >
             <VectorTileLayer />
