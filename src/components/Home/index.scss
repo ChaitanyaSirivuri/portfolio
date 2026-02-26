@@ -73,9 +73,13 @@
     float: left;
     animation: loading 1s 1.9s infinite;
     white-space: nowrap;
+    background: linear-gradient(to right, #64ccc5 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.4s ease-out;
 
     &:hover {
-      background: #64ccc5;
+      background-position: left bottom;
       color: black;
     }
   }

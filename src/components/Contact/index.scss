@@ -75,14 +75,17 @@
     padding: 8px 10px;
     border: 1px solid #64cccd;
     float: left;
-    background: 0 0;
+    background: linear-gradient(to right, #64cccd 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.4s ease-out;
     text-transform: uppercase;
     float: right;
     text-align: center;
     margin-right: 10px;
 
     &:hover {
-      background: #64cccd;
+      background-position: left bottom;
       color: black;
     }
 
