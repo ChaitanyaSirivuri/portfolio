@@ -8,6 +8,7 @@ import {
   faGithub,
   faLinkedin,
   faMedium,
+  faGoogleScholar
 } from '@fortawesome/free-brands-svg-icons'
 
 const Sidebar = () => (
@@ -54,6 +55,15 @@ const Sidebar = () => (
           href="https://github.com/ChaitanyaSirivuri"
         >
           <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
+        </a>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://scholar.google.com/citations?user=LOXAn64AAAAJ&hl=en"
+        >
+          <FontAwesomeIcon icon={faGoogleScholar} color="#4d4d4e" />
         </a>
       </li>
       <li>
