@@ -8,6 +8,7 @@ import {
   faGithub,
   faLinkedin,
   faMedium,
+  faGoogleScholar
 } from '@fortawesome/free-brands-svg-icons'
 
 const Sidebar = () => (
