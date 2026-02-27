@@ -6,7 +6,7 @@ import './App.scss'
 import 'animate.css'
 import { Route, Routes } from 'react-router-dom'
 import Contact from './components/Contact'
-
+//bharat
 function App() {
   return (
     <>
