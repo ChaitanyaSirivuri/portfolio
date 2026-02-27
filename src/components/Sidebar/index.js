@@ -60,6 +60,15 @@ const Sidebar = () => (
         <a
           target="_blank"
           rel="noreferrer"
+          href="https://scholar.google.com/citations?user=LOXAn64AAAAJ&hl=en"
+        >
+          <FontAwesomeIcon icon={faGoogleScholar} color="#4d4d4e" />
+        </a>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          rel="noreferrer"
           href="https://medium.com/@chaitanyasirivuri"
         >
           <FontAwesomeIcon icon={faMedium} color="#4d4d4e" />
