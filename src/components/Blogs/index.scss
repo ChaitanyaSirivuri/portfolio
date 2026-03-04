@@ -84,15 +84,14 @@
   min-width: clamp(260px, 30vw, 350px);
   flex-shrink: 0;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  transform-style: preserve-3d;
   cursor: pointer;
 }
 
 /* Hovering on a card elevates it smoothly */
 .marquee-content>*:hover {
-  transform: translateZ(30px) scale(1.02);
+  transform: scale(1.05);
   box-shadow: -20px 20px 30px rgba(0, 0, 0, 0.5);
-  z-index: 5;
+  z-index: 10;
 }
 
 /* ========================= */
