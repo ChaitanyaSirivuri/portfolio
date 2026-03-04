@@ -6,6 +6,7 @@ import './App.scss'
 import 'animate.css'
 import { Route, Routes } from 'react-router-dom'
 import Contact from './components/Contact'
+import CardComponent from './components/Cards/CardComponent'
 //bharat
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
+      {/* <CardComponent/> */}
     </>
   )
 }

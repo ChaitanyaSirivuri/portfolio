@@ -1,0 +1,155 @@
+.blogs-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* Align children to the left so margins work cleanly */
+  padding-top: 5rem;
+  overflow: hidden;
+}
+
+.blogs-page .text-zone {
+  position: relative;
+  width: auto;
+  left: 0;
+  top: 0;
+  transform: none;
+  margin-left: 10%;
+  /* Match the layout text-zone left: 10% */
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+.blogs-page .cards-container {
+  width: 85%;
+  /* Match H1 left indentation with 10% margin, and symmetric 10% on right */
+  margin-left: 10%;
+  height: 65vh;
+  /* Keep the grid contained vertically */
+  position: relative;
+  overflow: hidden;
+  /* Ensure nothing breaks out */
+  perspective: 1500px;
+  /* Enable 3D space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Dissolve/Fade out the edges */
+  /* Left/Right mask aligns with 10% margin-left of the H1 text */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* ========================= */
+/* 3D Isometric Grid */
+/* ========================= */
+
+.isometric-grid {
+  transform: rotateX(40deg) rotateZ(-37.5deg) scale(0.9);
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  width: 250vw;
+  /* Wide enough to allow left/right sliding without showing edges */
+  align-items: center;
+}
+
+/* ========================= */
+/* Marquee Rows */
+/* ========================= */
+
+.marquee-row {
+  display: flex;
+  width: fit-content;
+
+  /* Use hardware acceleration for transforms */
+  transform: translateZ(0);
+}
+
+.marquee-content {
+  display: flex;
+  gap: 25px;
+  padding-right: 25px;
+  /* Essential for seamless gap transition between duplicated blocks */
+}
+
+/* Base card styling within marquee */
+.marquee-content>* {
+  min-width: clamp(260px, 30vw, 350px);
+  flex-shrink: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Hovering on a card elevates it smoothly */
+.marquee-content>*:hover {
+  transform: translateZ(30px) scale(1.02);
+  box-shadow: -20px 20px 30px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+/* ========================= */
+/* Animations */
+/* ========================= */
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Directions & Speeds */
+.marquee-row.left .marquee-content {
+  animation: scrollLeft 45s linear infinite;
+}
+
+.marquee-row.right .marquee-content {
+  animation: scrollRight 45s linear infinite;
+}
+
+.marquee-row.marquee-third .marquee-content {
+  /* Offset the animation slightly so the cards appear staggered relative to row 1 */
+  animation: scrollLeft 50s linear infinite;
+  animation-delay: -10s;
+}
+
+.marquee-row.marquee-fourth .marquee-content {
+  /* Right scroll with different speed and delay */
+  animation: scrollRight 55s linear infinite;
+  animation-delay: -20s;
+}
+
+.marquee-row.marquee-fifth .marquee-content {
+  /* Left scroll offset for the final row */
+  animation: scrollLeft 48s linear infinite;
+  animation-delay: -5s;
+}
+
+/* ========================= */
+/* Pause on Hover */
+/* ========================= */
+
+.marquee-row:hover .marquee-content {
+  animation-play-state: paused;
+}
