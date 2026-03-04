@@ -1,101 +1,155 @@
 .blogs-page {
   width: 100%;
-  min-height: 70vh;
-  // background: #000;
-  // padding: 40px 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* Align children to the left so margins work cleanly */
+  padding-top: 5rem;
+  overflow: hidden;
+}
+
+.blogs-page .text-zone {
+  position: relative;
+  width: auto;
+  left: 0;
+  top: 0;
+  transform: none;
+  margin-left: 10%;
+  /* Match the layout text-zone left: 10% */
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+.blogs-page .cards-container {
+  width: 85%;
+  /* Match H1 left indentation with 10% margin, and symmetric 10% on right */
+  margin-left: 10%;
+  height: 65vh;
+  /* Keep the grid contained vertically */
+  position: relative;
+  overflow: hidden;
+  /* Ensure nothing breaks out */
+  perspective: 1500px;
+  /* Enable 3D space */
   display: flex;
   justify-content: center;
-}
+  align-items: center;
 
-.blogs-page > div {
-  width: 90%;
-  position: relative;
-}
-.carousel-wrapper {
-  position: relative;
+  /* Dissolve/Fade out the edges */
+  /* Left/Right mask aligns with 10% margin-left of the H1 text */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 /* ========================= */
-/* Scroll Row */
+/* 3D Isometric Grid */
 /* ========================= */
 
-.Container1{
+.isometric-grid {
+  transform: rotateX(40deg) rotateZ(-37.5deg) scale(0.9);
+  transform-style: preserve-3d;
   display: flex;
-  gap: 16px;
-  overflow-x: hidden;
-  scroll-behavior: auto;
-  padding: 0px 40px;
-  
+  flex-direction: column;
+  gap: 0rem;
+  width: 250vw;
+  /* Wide enough to allow left/right sliding without showing edges */
+  align-items: center;
 }
 
-/* Hide scrollbar */
-.Container1::-webkit-scrollbar {
-  display: none;
+/* ========================= */
+/* Marquee Rows */
+/* ========================= */
+
+.marquee-row {
+  display: flex;
+  width: fit-content;
+
+  /* Use hardware acceleration for transforms */
+  transform: translateZ(0);
 }
 
-.Container1 {
-  scrollbar-width: none;
+.marquee-content {
+  display: flex;
+  gap: 25px;
+  padding-right: 25px;
+  /* Essential for seamless gap transition between duplicated blocks */
 }
 
-/* Cards */
-.Container1 > * {
-  min-width: 320px;
+/* Base card styling within marquee */
+.marquee-content>* {
+  min-width: clamp(260px, 30vw, 350px);
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 
-.Container1 > *:hover {
-  transform: scale(1.08);
+/* Hovering on a card elevates it smoothly */
+.marquee-content>*:hover {
+  transform: translateZ(30px) scale(1.02);
+  box-shadow: -20px 20px 30px rgba(0, 0, 0, 0.5);
   z-index: 5;
 }
 
 /* ========================= */
-/* Hover Zones */
+/* Animations */
 /* ========================= */
 
-.hover-zone {
-  position: absolute;
-  top: 0;
-  width: 80px;
-  height: 100%;
-  z-index: 10;
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
-.hover-zone.left {
-  left: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
-.hover-zone.right {
-  right: 0;
-  background: linear-gradient(to left, rgba(0,0,0,0.8), transparent);
+/* Directions & Speeds */
+.marquee-row.left .marquee-content {
+  animation: scrollLeft 45s linear infinite;
+}
+
+.marquee-row.right .marquee-content {
+  animation: scrollRight 45s linear infinite;
+}
+
+.marquee-row.marquee-third .marquee-content {
+  /* Offset the animation slightly so the cards appear staggered relative to row 1 */
+  animation: scrollLeft 50s linear infinite;
+  animation-delay: -10s;
+}
+
+.marquee-row.marquee-fourth .marquee-content {
+  /* Right scroll with different speed and delay */
+  animation: scrollRight 55s linear infinite;
+  animation-delay: -20s;
+}
+
+.marquee-row.marquee-fifth .marquee-content {
+  /* Left scroll offset for the final row */
+  animation: scrollLeft 48s linear infinite;
+  animation-delay: -5s;
 }
 
 /* ========================= */
-/* Optional Smooth Feel */
+/* Pause on Hover */
 /* ========================= */
 
-.Container1 > *:active {
-  transform: scale(0.96);
-}
-
-/* ========================= */
-/* Second Container */
-/* ========================= */
-
-.Container2 {
-  display: flex;
-  gap: 16px;
-  overflow-x: hidden;
-  scroll-behavior: auto;
-  padding: 0px 40px;
-}
-
-.Container2::-webkit-scrollbar {
-  display: none;
-}
-
-.Container2 > * {
-  min-width: 320px;
-  flex-shrink: 0;
+.marquee-row:hover .marquee-content {
+  animation-play-state: paused;
 }

@@ -1,94 +1,111 @@
-import { useRef } from 'react'
+import { useEffect, useState } from 'react'
 import Loader from 'react-loaders'
-import CardComponent from '../Cards/CardComponent'
+import AnimatedLetters from '../AnimatedLetters'
+import CardComponent from './Cards/CardComponent'
 import './index.scss'
 
 const Blogs = () => {
-  const container1Ref = useRef(null)
-  const container2Ref = useRef(null)
+  const [letterClass, setLetterClass] = useState('text-animate')
 
-  const scrollInterval1 = useRef(null)
-  const scrollInterval2 = useRef(null)
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLetterClass('text-animate-hover')
+    }, 3000)
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [])
 
   const data = [
-    { title:'Home', subtitle:'Welcome to my portfolio', footer:'Explore ', updated:'1hr' },
-    { title:'College', subtitle:'Welcome to my portfolio', footer:'Explore ', updated:'1hr' },
-    { title:'Project', subtitle:'Welcome to my portfolio', footer:'Explore ', updated:'1hr' },
-    { title:'Design', subtitle:'Welcome to my portfolio', footer:'Explore ', updated:'1hr' },
-    { title:'Work', subtitle:'Welcome to my portfolio', footer:'Explore ', updated:'1hr' },
+    { title: 'Home', subtitle: 'Welcome to my portfolio', footer: 'Explore ', updated: '1hr' },
+    { title: 'College', subtitle: 'Welcome to my portfolio', footer: 'Explore ', updated: '1hr' },
+    { title: 'Project', subtitle: 'Welcome to my portfolio', footer: 'Explore ', updated: '1hr' },
+    { title: 'Design', subtitle: 'Welcome to my portfolio', footer: 'Explore ', updated: '1hr' },
+    { title: 'Work', subtitle: 'Welcome to my portfolio', footer: 'Explore ', updated: '1hr' },
   ]
-
-  const data2 = [...data]
-
-  const startScroll = (ref, intervalRef, direction) => {
-    stopScroll(intervalRef)
-
-    intervalRef.current = setInterval(() => {
-      if (!ref.current) return
-
-      ref.current.scrollLeft += direction * 4
-
-      if (
-        ref.current.scrollLeft <= 0 ||
-        ref.current.scrollLeft + ref.current.clientWidth >=
-          ref.current.scrollWidth
-      ) {
-        stopScroll(intervalRef)
-      }
-    }, 10)
-  }
-
-  const stopScroll = (intervalRef) => {
-    clearInterval(intervalRef.current)
-  }
+  // Provide enough items so it exceeds viewport width generously.
+  const displayData = [...data, ...data, ...data, ...data]
 
   return (
     <>
       <div className="container blogs-page">
-        <div>
-
-          {/* ===== Container 1 ===== */}
-          <div className="carousel-wrapper">
-            <div
-              className="hover-zone left"
-              onMouseEnter={() => startScroll(container1Ref, scrollInterval1, -1)}
-              onMouseLeave={() => stopScroll(scrollInterval1)}
+        <div className="text-zone">
+          <h1>
+            <AnimatedLetters
+              letterClass={letterClass}
+              strArray={['B', 'l', 'o', 'g', 's']}
+              idx={15}
             />
-
-            <div className="Container1" ref={container1Ref}>
-              {data.map((item, index) => (
-                <CardComponent key={index} data={item} />
-              ))}
+          </h1>
+        </div>
+        <div className="cards-container">
+          <div className="isometric-grid">
+            <div className="marquee-row left">
+              <div className="marquee-content">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`a1-${index}`} data={item} />
+                ))}
+              </div>
+              <div className="marquee-content" aria-hidden="true">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`a2-${index}`} data={item} />
+                ))}
+              </div>
             </div>
 
-            <div
-              className="hover-zone right"
-              onMouseEnter={() => startScroll(container1Ref, scrollInterval1, 1)}
-              onMouseLeave={() => stopScroll(scrollInterval1)}
-            />
-          </div>
-
-          {/* ===== Container 2 ===== */}
-          <div className="carousel-wrapper second">
-            <div
-              className="hover-zone left"
-              onMouseEnter={() => startScroll(container2Ref, scrollInterval2, -1)}
-              onMouseLeave={() => stopScroll(scrollInterval2)}
-            />
-
-            <div className="Container2" ref={container2Ref}>
-              {data2.map((item, index) => (
-                <CardComponent key={index} data={item} />
-              ))}
+            <div className="marquee-row right">
+              <div className="marquee-content">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`b1-${index}`} data={item} />
+                ))}
+              </div>
+              <div className="marquee-content" aria-hidden="true">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`b2-${index}`} data={item} />
+                ))}
+              </div>
             </div>
 
-            <div
-              className="hover-zone right"
-              onMouseEnter={() => startScroll(container2Ref, scrollInterval2, 1)}
-              onMouseLeave={() => stopScroll(scrollInterval2)}
-            />
-          </div>
+            <div className="marquee-row left marquee-third">
+              <div className="marquee-content">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`c1-${index}`} data={item} />
+                ))}
+              </div>
+              <div className="marquee-content" aria-hidden="true">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`c2-${index}`} data={item} />
+                ))}
+              </div>
+            </div>
 
+            <div className="marquee-row right marquee-fourth">
+              <div className="marquee-content">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`d1-${index}`} data={item} />
+                ))}
+              </div>
+              <div className="marquee-content" aria-hidden="true">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`d2-${index}`} data={item} />
+                ))}
+              </div>
+            </div>
+
+            <div className="marquee-row left marquee-fifth">
+              <div className="marquee-content">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`e1-${index}`} data={item} />
+                ))}
+              </div>
+              <div className="marquee-content" aria-hidden="true">
+                {displayData.map((item, index) => (
+                  <CardComponent key={`e2-${index}`} data={item} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
