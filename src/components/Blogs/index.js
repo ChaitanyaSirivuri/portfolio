@@ -62,38 +62,24 @@ const Blogs = () => {
     }
   }, [])
 
-  const closeFromExpanded = useCallback(() => {
-    setCardState('closing-flip')
-    setTimeout(() => {
-      setCardState('closing-return')
-      setTimeout(() => {
-        restoreFlowCard()
-        setCardState('idle')
-        setActiveCard(null)
-      }, 450)
-    }, 500)
-  }, [restoreFlowCard])
-
-  const closeFromPopped = useCallback(() => {
-    setCardState('closing-return')
+  const triggerClose = useCallback(() => {
+    if (cardState === 'idle' || cardState === 'closing') return
+    setCardState('closing')
     setTimeout(() => {
       restoreFlowCard()
       setCardState('idle')
       setActiveCard(null)
-    }, 450)
-  }, [restoreFlowCard])
+    }, 700)
+  }, [cardState, restoreFlowCard])
 
   const handleClose = useCallback((e) => {
     e.stopPropagation()
-    if (cardState === 'idle' || cardState.startsWith('closing')) return
-    if (cardState === 'expanded') closeFromExpanded()
-  }, [cardState, closeFromExpanded])
+    triggerClose()
+  }, [triggerClose])
 
   const handleBackdropClick = useCallback(() => {
-    if (cardState === 'idle' || cardState.startsWith('closing')) return
-    if (cardState === 'expanded') closeFromExpanded()
-    else if (cardState === 'popped') closeFromPopped()
-  }, [cardState, closeFromExpanded, closeFromPopped])
+    triggerClose()
+  }, [triggerClose])
 
   const isFlowPaused = cardState !== 'idle'
 
@@ -175,6 +161,7 @@ const Blogs = () => {
               <button className="close-btn" onClick={handleClose}>
                 <span className="close-icon"></span>
               </button>
+              <div className="card-back-inner">
               <article className="blog-article">
                 <h1>{activeCard.data.title}</h1>
                 <div className="article-meta">
@@ -222,6 +209,7 @@ const Blogs = () => {
                   remarkable advances, but it's up to us to guide their development wisely.
                 </p>
               </article>
+              </div>
             </div>
           </div>
         </div>
