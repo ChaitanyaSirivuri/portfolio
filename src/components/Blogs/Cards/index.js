@@ -1,18 +1,28 @@
+import { useRef, useCallback } from "react";
 import "./index.scss";
-import yosemiteImg from "./bi1.jpeg"; // replace with your image path
+import yosemiteImg from "./bi1.jpeg";
 
-// Alternating thumbnail background colors: white → cyan
 const ROW_COLORS = ["#ffffff", "#64ccc5"];
-// Contrasting pill border: opposite of thumbnail bg
 const PILL_COLORS = ["#ffffff", "#64ccc5"];
 
-const CardComponent = ({ data, cardIndex = 0 }) => {
+const CardComponent = ({ data, cardIndex = 0, onClick, isOverlay }) => {
+  const cardRef = useRef(null);
   const thumbnailBg = ROW_COLORS[cardIndex % ROW_COLORS.length];
   const pillBorder = PILL_COLORS[cardIndex % PILL_COLORS.length];
 
+  const handleClick = useCallback(() => {
+    if (onClick && cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      onClick(data, rect, cardIndex, cardRef.current);
+    }
+  }, [onClick, data, cardIndex]);
+
   return (
-    <div className="card-container">
-      <div className="card">
+    <div
+      className={`card-container ${isOverlay ? 'overlay-card' : ''}`}
+      onClick={!isOverlay ? handleClick : undefined}
+    >
+      <div className="card" ref={cardRef}>
         <div className="card-image" style={{ backgroundColor: thumbnailBg }}>
           <img src={yosemiteImg} alt="Blog thumbnail" />
         </div>
