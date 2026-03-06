@@ -65,10 +65,10 @@ const Blogs = () => {
   const triggerClose = useCallback(() => {
     if (cardState === 'idle' || cardState === 'closing') return
     setCardState('closing')
+    setTimeout(restoreFlowCard, 500)
     setTimeout(() => {
-      restoreFlowCard()
-      setCardState('idle')
       setActiveCard(null)
+      requestAnimationFrame(() => setCardState('idle'))
     }, 700)
   }, [cardState, restoreFlowCard])
 
