@@ -50,7 +50,7 @@
 /* ========================= */
 
 .isometric-grid {
-  transform: rotateX(40deg) rotateZ(-37.5deg) scale(0.9);
+  transform: rotateX(30deg) rotateZ(-30deg) scale(0.9);
   transform-style: preserve-3d;
   display: flex;
   flex-direction: column;
@@ -74,8 +74,7 @@
 
 .marquee-content {
   display: flex;
-  gap: 25px;
-  padding-right: 25px;
+  padding-right: 25rem;
   /* Essential for seamless gap transition between duplicated blocks */
 }
 
@@ -120,28 +119,28 @@
 
 /* Directions & Speeds */
 .marquee-row.left .marquee-content {
-  animation: scrollLeft 45s linear infinite;
+  animation: scrollLeft 110s linear infinite;
 }
 
 .marquee-row.right .marquee-content {
-  animation: scrollRight 45s linear infinite;
+  animation: scrollRight 110s linear infinite;
 }
 
 .marquee-row.marquee-third .marquee-content {
   /* Offset the animation slightly so the cards appear staggered relative to row 1 */
-  animation: scrollLeft 50s linear infinite;
+  animation: scrollLeft 110s linear infinite;
   animation-delay: -10s;
 }
 
 .marquee-row.marquee-fourth .marquee-content {
   /* Right scroll with different speed and delay */
-  animation: scrollRight 55s linear infinite;
+  animation: scrollRight 110s linear infinite;
   animation-delay: -20s;
 }
 
 .marquee-row.marquee-fifth .marquee-content {
   /* Left scroll offset for the final row */
-  animation: scrollLeft 48s linear infinite;
+  animation: scrollLeft 110s linear infinite;
   animation-delay: -5s;
 }
 
