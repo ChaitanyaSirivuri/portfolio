@@ -24,8 +24,7 @@ const Blogs = () => {
     { title: 'Design', category: 'VLMs' },
     { title: 'Work', category: 'LLMs' },
   ]
-  // Provide enough items so it exceeds viewport width generously.
-  const displayData = [...data, ...data, ...data, ...data]
+  const displayData = [...data, ...data]
 
   return (
     <>
