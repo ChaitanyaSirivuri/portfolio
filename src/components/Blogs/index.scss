@@ -140,7 +140,7 @@
   animation-play-state: paused !important;
 }
 
-.flow-paused .marquee-content > * {
+.flow-paused .marquee-content>* {
   pointer-events: none;
 }
 
@@ -187,9 +187,9 @@
   height: var(--origin-h);
 
   transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              top 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              width 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    top 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
   .card-flipper {
     width: 100%;
@@ -199,8 +199,8 @@
     will-change: transform;
     transform: rotateX(20deg) rotateZ(-20deg) scale(0.9);
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                filter 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.5s ease;
+      filter 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.5s ease;
   }
 
   .card-front,
@@ -228,9 +228,11 @@
     &::-webkit-scrollbar {
       width: 6px;
     }
+
     &::-webkit-scrollbar-track {
       background: transparent;
     }
+
     &::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.15);
       border-radius: 3px;
@@ -242,7 +244,7 @@
     transform: rotateX(0) rotateZ(0) scale(1.1);
     filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* STATE: expanded — card flips and goes fullscreen */
@@ -253,15 +255,15 @@
     height: 100vh;
     cursor: default;
     transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                top 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      top 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 
     .card-flipper {
       transform: rotateY(180deg);
       filter: none;
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                  filter 0.3s ease;
+        filter 0.3s ease;
     }
 
     .card-front,
@@ -278,15 +280,15 @@
     height: var(--origin-h);
     pointer-events: none;
     transition: left 0.6s cubic-bezier(0.4, 0, 0.15, 1),
-                top 0.65s cubic-bezier(0.5, 0, 0.1, 1),
-                width 0.5s cubic-bezier(0.3, 0, 0.2, 1),
-                height 0.5s cubic-bezier(0.3, 0, 0.2, 1);
+      top 0.65s cubic-bezier(0.5, 0, 0.1, 1),
+      width 0.5s cubic-bezier(0.3, 0, 0.2, 1),
+      height 0.5s cubic-bezier(0.3, 0, 0.2, 1);
 
     .card-flipper {
       transform: rotateX(20deg) rotateZ(-20deg) scale(0.9);
       opacity: 0;
       transition: transform 0.6s cubic-bezier(0.35, 0, 0.15, 1),
-                  opacity 0.15s ease 0.4s;
+        opacity 0.15s ease 0.4s;
     }
 
     .card-front,
