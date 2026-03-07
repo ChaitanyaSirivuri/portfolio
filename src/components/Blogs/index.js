@@ -185,7 +185,7 @@ const Blogs = () => {
                     <span className="meta-dot">·</span>
                     <span>5 min read</span>
                   </div>
-                  <p>
+                  <p className="p2">
                     The rapid advancement of artificial intelligence has opened new frontiers
                     in how we interact with technology. From natural language processing to
                     computer vision, the capabilities of modern AI systems continue to expand
