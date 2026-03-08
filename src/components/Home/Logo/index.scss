@@ -1,7 +1,7 @@
 .logo-container {
   z-index: 0;
-  width: 400px;
-  height: 609px;
+  width: 30rem;
+  height: 60rem;
   position: absolute;
   top: 0;
   right: 10%;
@@ -49,6 +49,7 @@
 /* Add a media query to hide the Logo component on screens with a maximum width of 768px (adjust as needed) */
 @media (max-width: 768px) {
   .logo-container {
-    display: none; /* Hide the Logo image */
+    display: none;
+    /* Hide the Logo image */
   }
 }
