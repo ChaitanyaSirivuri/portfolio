@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import AnimatedLetters from '../AnimatedLetters'
 import Sphere from './Sphere'
-import './index.scss'
+
 import Loader from 'react-loaders'
-import MouseTrail from '../Home/MouseTrail'
+import MouseTrail from '../MouseTrail'
 
 const About = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
