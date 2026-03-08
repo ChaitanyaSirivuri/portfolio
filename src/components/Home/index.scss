@@ -87,8 +87,12 @@
 
 @media (max-width: 768px) {
   .home-page .text-zone {
+    position: relative;
+    top: 10;
+    transform: none;
     width: 100%;
-    text-align: left; /* Align text to the left */
+    max-height: none;
+    text-align: left;
   }
 
   .home-page h1 {
@@ -97,19 +101,12 @@
 
   .home-page h2 {
     margin-top: 5px;
-    font-size: 11px; /* Reduced font size for h2 */
+    font-size: 11px;
   }
 
   .home-page .flat-button {
-    font-size: 10px; /* Reduced font size for the contact button */
-    padding: 8px 14px; /* Adjust button padding */
-  }
-
-  .home-page .text-zone {
-    position: relative;
-    top: 10;
-    transform: none;
-    width: 100%;
-    max-height: none;
+    font-size: 10px;
+    padding: 8px 14px;
   }
 }
+
