@@ -35,17 +35,17 @@ const About = () => {
             />
           </h1>
           <p>
-            Hi, I'm Chaitanya Sirivuri, enthusiastic undergraduate student who is
-            passionate about the exciting world of machine learning and data
-            science. Hailing from a diverse academic background, my insatiable
+            Hi, I'm Chaitanya Sirivuri, data science graduate student at Stony Brook University and Senior
+            research assistant at the Center of Excellence in Wireless and Information Technology (CEWIT), who is
+            passionate about the exciting world of Large Language Models and Vision Language Models.
+            Hailing from a diverse academic background, my insatiable
             curiosity led me to explore the realms of artificial intelligence
-            during my undergraduate studies.
+            throughout my academic journey.
           </p>
           <p>
             What truly sets me apart is my dedication to applying my knowledge
             in practical ways. I thrive on the creative process of building new
-            and innovative projects using machine learning and deep learning
-            techniques.
+            and innovative projects using Agentic AI, Explainable AI, and LLM projects.
           </p>
           <p>
             In addition to my hands-on projects, I also devotes my free time to
